@@ -85,9 +85,9 @@ const ACCENT: Record<
   brand: {
     border: "border-brand/30",
     glow: "bg-brand/20",
-    iconWrap: "bg-brand/12 text-brand-cyan ring-brand/20",
+    iconWrap: "bg-brand/12 text-brand-cyan ring-brand/25",
     eyebrow: "text-brand-cyan",
-    bullet: "bg-brand/15 text-brand-cyan ring-brand/20",
+    bullet: "bg-brand/15 text-brand-cyan ring-brand/25",
   },
 };
 
@@ -197,24 +197,34 @@ export default function InstallationPage() {
               })}
             </div>
 
-            {/* 8 · HINWEIS-KARTE ──────────────────────────────── */}
+            {/* 8 · HINWEIS-KARTE (gleiche Karten-Sprache wie die Schritte) ── */}
             <Reveal className="mt-6 block sm:mt-7">
-              <div className="rounded-2xl border border-surface-border bg-surface/70 p-5 sm:p-6">
-                <div className="flex items-start gap-3">
-                  <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand/12 text-brand-cyan ring-1 ring-inset ring-brand/20">
-                    <Icon name="shield" size={16} />
-                  </span>
-                  <div>
-                    <p className="text-sm font-semibold text-ink">Hinweis</p>
-                    <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
-                      Nach der Installation trägst du die Zugangsdaten ein, die du
-                      von IPTVKauf über deine Bestellung oder unseren Support
-                      erhalten hast. Ohne gültige Zugangsdaten kann die App keine
-                      Inhalte laden.
-                    </p>
+              <article className="relative overflow-hidden rounded-3xl border border-brand/30 bg-surface p-6 sm:p-8">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -right-10 -top-12 h-40 w-40 rounded-full bg-brand/20 opacity-40 blur-3xl"
+                />
+
+                <div className="relative">
+                  <div className="flex items-center gap-4">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand/12 text-brand-cyan ring-1 ring-inset ring-brand/25">
+                      <Icon name="shield" size={24} />
+                    </span>
+                    <div>
+                      <h2 className="text-xl font-semibold text-ink sm:text-2xl">
+                        Hinweis
+                      </h2>
+                    </div>
                   </div>
+
+                  <p className="mt-6 text-sm leading-relaxed text-ink-muted sm:text-[0.95rem]">
+                    Nach der Installation trägst du die Zugangsdaten ein, die du
+                    von IPTVKauf über deine Bestellung oder unseren Support
+                    erhalten hast. Ohne gültige Zugangsdaten kann die App keine
+                    Inhalte laden.
+                  </p>
                 </div>
-              </div>
+              </article>
             </Reveal>
 
             {/* 9 · SUPPORT-KARTE ──────────────────────────────── */}
