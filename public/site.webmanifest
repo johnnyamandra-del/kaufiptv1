@@ -1,0 +1,13 @@
+{
+  "name": "IPTVKauf",
+  "short_name": "IPTVKauf",
+  "description": "IPTV kaufen für Smart TV, Fire TV, Android TV, Smartphone & PC.",
+  "lang": "de-DE",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#06070A",
+  "theme_color": "#06070A",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
