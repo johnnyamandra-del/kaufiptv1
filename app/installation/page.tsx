@@ -28,6 +28,8 @@ type Step = {
   no: string;
   title: string;
   icon: IconName;
+  /** Statt Icon-Glyphe das offizielle Downloader-App-Logo im Badge zeigen. */
+  logo?: boolean;
   accent: Accent;
   items: string[];
 };
@@ -37,6 +39,7 @@ const STEPS: Step[] = [
     no: "01",
     title: "Downloader installieren",
     icon: "search",
+    logo: true,
     accent: "downloader",
     items: [
       "Öffne den App Store bzw. Amazon Appstore auf deinem Gerät.",
@@ -144,9 +147,20 @@ export default function InstallationPage() {
                       <div className="relative">
                         <div className="flex items-center gap-4">
                           <span
-                            className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl ring-1 ring-inset ${a.iconWrap}`}
+                            className={`grid h-12 w-12 shrink-0 place-items-center overflow-hidden rounded-xl ring-1 ring-inset ${a.iconWrap}`}
                           >
-                            <Icon name={step.icon} size={24} />
+                            {step.logo ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img
+                                src="/downloader-logo.svg"
+                                alt=""
+                                width={48}
+                                height={48}
+                                className="h-full w-full"
+                              />
+                            ) : (
+                              <Icon name={step.icon} size={24} />
+                            )}
                           </span>
                           <div>
                             <p

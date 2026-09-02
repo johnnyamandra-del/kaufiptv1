@@ -58,8 +58,15 @@ export function DownloaderCodeCard() {
       />
 
       <div className="relative">
-        <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-downloader/12 text-downloader ring-1 ring-inset ring-downloader/25">
-          <Icon name="bolt" size={26} />
+        <span className="mx-auto grid h-14 w-14 place-items-center overflow-hidden rounded-2xl bg-downloader/12 ring-1 ring-inset ring-downloader/25">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/downloader-logo.svg"
+            alt=""
+            width={56}
+            height={56}
+            className="h-full w-full"
+          />
         </span>
 
         <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-downloader">
