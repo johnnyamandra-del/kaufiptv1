@@ -62,12 +62,20 @@ export function DownloaderCodeCard() {
           <Icon name="bolt" size={26} />
         </span>
 
-        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-downloader sm:text-sm">
-          IPTVKauf Downloader Code
+        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.24em] text-downloader">
+          IPTVKauf Downloader
         </p>
+
+        <h2 className="mt-2 text-xl font-semibold text-ink sm:text-2xl">
+          Downloader Code
+        </h2>
 
         <p className="mt-4 whitespace-nowrap font-mono text-[2.75rem] font-extrabold leading-none tracking-[0.08em] text-downloader sm:text-[5.25rem] sm:tracking-[0.12em]">
           {DOWNLOADER_CODE}
+        </p>
+
+        <p className="mx-auto mt-4 max-w-xs text-sm text-ink-muted sm:text-base">
+          Öffne Downloader → Code eingeben → Go
         </p>
 
         <button
@@ -88,11 +96,6 @@ export function DownloaderCodeCard() {
           }`}
         >
           Code kopiert!
-        </p>
-
-        <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-ink-muted sm:text-base">
-          Öffne die Downloader-App und gib diesen Code ein, um die
-          IPTVKauf-Installation zu starten.
         </p>
       </div>
     </div>

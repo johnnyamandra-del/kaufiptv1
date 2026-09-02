@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Section } from "@/components/Section";
 import { Reveal } from "@/components/Reveal";
 import { Icon, type IconName } from "@/components/Icon";
 import { JsonLd } from "@/components/JsonLd";
 import { DownloaderCodeCard } from "@/components/DownloaderCodeCard";
-import { InstallIllustration } from "@/components/InstallIllustration";
 import { pageMeta, breadcrumbLd } from "@/lib/seo";
 import { site } from "@/lib/content";
 import { DOWNLOADER_CODE } from "@/lib/downloader";
@@ -13,7 +10,7 @@ import { DOWNLOADER_CODE } from "@/lib/downloader";
 export const metadata: Metadata = pageMeta({
   title: "IPTVKauf installieren",
   description:
-    "IPTVKauf schnell und einfach auf Fernseher oder Streaming-Gerät installieren: Downloader-App einrichten, vorbereiten und IPTVKauf mit dem Downloader-Code laden. Für Fire TV Stick, Fire TV, Android TV, Google TV und Android TV Box.",
+    "IPTVKauf in drei Schritten installieren: Downloader-App einrichten, vorbereiten und IPTVKauf mit dem Downloader-Code laden. Für Fire TV Stick, Fire TV, Android TV und Google TV.",
   path: "/installation",
   keywords: [
     "IPTV Installation",
@@ -25,12 +22,14 @@ export const metadata: Metadata = pageMeta({
   ],
 });
 
+type Accent = "downloader" | "brand";
+
 type Step = {
   no: string;
   title: string;
   icon: IconName;
-  text: string;
-  note?: string;
+  accent: Accent;
+  items: string[];
 };
 
 const STEPS: Step[] = [
@@ -38,30 +37,59 @@ const STEPS: Step[] = [
     no: "01",
     title: "Downloader installieren",
     icon: "search",
-    text: "Suche im App Store deines Fire TV oder Android TV Geräts nach der App Downloader und installiere sie.",
+    accent: "downloader",
+    items: [
+      "Öffne den App Store bzw. Amazon Appstore auf deinem Gerät.",
+      "Suche nach der App „Downloader“.",
+      "Installiere die Downloader-App.",
+      "Öffne anschließend Downloader.",
+    ],
   },
   {
     no: "02",
     title: "Downloader vorbereiten",
     icon: "gear",
-    text: "Je nach Gerät musst du in den Einstellungen zuerst die Installation von Apps aus unbekannten Quellen erlauben, damit Downloader die IPTVKauf-App einrichten darf.",
-    note: "Die genaue Bezeichnung dieser Option unterscheidet sich je nach Hersteller, Modell und Software-Version – suche nach einem Menü wie „Entwickleroptionen“ oder „Apps aus unbekannten Quellen“.",
+    accent: "brand",
+    items: [
+      "Öffne die Einstellungen deines Geräts.",
+      "Öffne den Bereich „Entwickleroptionen“ bzw. „Geräteoptionen“.",
+      "Erlaube die Installation von Apps aus unbekannten Quellen, falls dies erforderlich ist.",
+      "Die Menü-Bezeichnungen können je nach Gerät und Software-Version abweichen.",
+    ],
   },
   {
     no: "03",
     title: "IPTVKauf installieren",
     icon: "rocket",
-    text: `Öffne Downloader und gib den IPTVKauf Code ${DOWNLOADER_CODE} ein. Starte anschließend den Download und installiere die App.`,
+    accent: "downloader",
+    items: [
+      `Öffne Downloader und gib den IPTVKauf Code ${DOWNLOADER_CODE} ein.`,
+      "Bestätige mit „Los“ / „Go“.",
+      "Warte, bis der Download abgeschlossen ist, und installiere die IPTVKauf-App.",
+      "Öffne IPTVKauf nach der Installation.",
+    ],
   },
 ];
 
-const DEVICES: { name: string; icon: IconName }[] = [
-  { name: "Amazon Fire TV Stick", icon: "stick" },
-  { name: "Fire TV", icon: "tv" },
-  { name: "Android TV", icon: "tv" },
-  { name: "Google TV", icon: "tv" },
-  { name: "Android TV Box", icon: "box" },
-];
+const ACCENT: Record<
+  Accent,
+  { border: string; glow: string; iconWrap: string; eyebrow: string; bullet: string }
+> = {
+  downloader: {
+    border: "border-downloader/30",
+    glow: "bg-downloader/20",
+    iconWrap: "bg-downloader/12 text-downloader ring-downloader/25",
+    eyebrow: "text-downloader",
+    bullet: "bg-downloader/15 text-downloader ring-downloader/25",
+  },
+  brand: {
+    border: "border-brand/30",
+    glow: "bg-brand/20",
+    iconWrap: "bg-brand/12 text-brand-cyan ring-brand/20",
+    eyebrow: "text-brand-cyan",
+    bullet: "bg-brand/15 text-brand-cyan ring-brand/20",
+  },
+};
 
 export default function InstallationPage() {
   return (
@@ -73,226 +101,162 @@ export default function InstallationPage() {
         ])}
       />
 
-      {/* ── HERO ─────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-32 pb-12 sm:pt-40 sm:pb-20">
-        <div aria-hidden className="pointer-events-none absolute inset-0 bg-hero-glow" />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 grid-noise opacity-50 [mask-image:radial-gradient(65%_55%_at_50%_0%,black,transparent)]"
-        />
-        <div className="container-x relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          <Reveal>
-            <p className="eyebrow mb-5">IPTVKauf Installation</p>
-            <h1 className="text-[2.5rem] font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4rem]">
-              IPTVKauf <span className="text-gradient">installieren</span>
-            </h1>
-            <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-muted sm:text-lg">
-              Installiere IPTVKauf schnell und einfach auf deinem Fernseher oder
-              Streaming-Gerät.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#downloader-code"
-                className="btn-downloader w-full px-7 py-4 text-base sm:w-auto"
-              >
-                Zum Downloader-Code
-                <Icon name="arrow" size={18} />
-              </a>
-              <a
-                href="#schritte"
-                className="btn-secondary w-full px-7 py-4 text-base sm:w-auto"
-              >
-                Schritte ansehen
-              </a>
-            </div>
-          </Reveal>
-
-          <Reveal delay={120}>
-            <InstallIllustration />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── DOWNLOADER CODE ──────────────────────────────────── */}
-      <section id="downloader-code" className="section pt-6">
+      <div className="bg-bg">
         <div className="container-x">
-          <Reveal className="mx-auto mb-10 max-w-2xl text-center">
-            <p className="eyebrow mb-4 !text-downloader">Downloader Code</p>
-            <h2 className="text-3xl leading-tight sm:text-4xl md:text-[2.75rem]">
-              Dein Schlüssel zur <span className="text-downloader">Installation</span>
-            </h2>
-          </Reveal>
-          <Reveal>
-            <DownloaderCodeCard />
-          </Reveal>
-        </div>
-      </section>
+          <div className="mx-auto max-w-[860px] pb-24 pt-32 sm:pb-32 sm:pt-40">
+            {/* 1–3 · HERO ─────────────────────────────────────── */}
+            <Reveal className="text-center">
+              <p className="eyebrow">IPTVKauf Installation</p>
+              <h1 className="mt-6 text-[2.5rem] font-semibold leading-[1.05] tracking-tight sm:text-6xl">
+                IPTVKauf <span className="text-gradient">installieren</span>
+              </h1>
+              <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-ink-muted sm:text-lg">
+                Installiere IPTVKauf schnell und einfach auf deinem Gerät. Folge
+                den drei Schritten und richte deine App in wenigen Minuten ein.
+              </p>
+            </Reveal>
 
-      {/* ── 3 SCHRITTE ───────────────────────────────────────── */}
-      <section id="schritte" className="section pt-6">
-        <div className="container-x">
-          <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="eyebrow mb-4 !text-downloader">In 3 Schritten</p>
-            <h2 className="text-3xl leading-tight sm:text-4xl md:text-[2.75rem]">
-              So installierst du IPTVKauf
-            </h2>
-            <p className="mt-4 text-base leading-relaxed text-ink-muted sm:text-lg">
-              Folge diesen drei Schritten – die Einrichtung dauert meist nur
-              wenige Minuten.
-            </p>
-          </Reveal>
+            {/* 4 · DOWNLOADER CODE CARD ───────────────────────── */}
+            <Reveal className="mt-14 block sm:mt-16">
+              <DownloaderCodeCard />
+            </Reveal>
 
-          <ol className="mx-auto grid max-w-5xl gap-5 lg:grid-cols-3">
-            {STEPS.map((step, i) => {
-              const parts = step.text.split(DOWNLOADER_CODE);
-              return (
-                <Reveal key={step.no} delay={i * 80} as="li">
-                  <article className="relative flex h-full flex-col overflow-hidden rounded-3xl border border-surface-border bg-surface p-7 sm:p-8">
-                    <span
-                      aria-hidden
-                      className="pointer-events-none absolute -right-2 -top-4 text-[6rem] font-extrabold leading-none text-white/[0.04] sm:text-[7rem]"
+            {/* 5–7 · SCHRITT-KARTEN ───────────────────────────── */}
+            <div className="mt-14 space-y-6 sm:mt-20 sm:space-y-7">
+              {STEPS.map((step, i) => {
+                const a = ACCENT[step.accent];
+                return (
+                  <Reveal key={step.no} delay={i * 70} className="block">
+                    <article
+                      className={`relative overflow-hidden rounded-3xl border bg-surface p-6 sm:p-8 ${a.border}`}
                     >
-                      {step.no}
-                    </span>
-
-                    <div className="relative flex items-center gap-4">
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-downloader/12 text-downloader ring-1 ring-inset ring-downloader/25">
-                        <Icon name={step.icon} size={24} />
-                      </span>
-                      <span className="text-2xl font-extrabold text-downloader">
+                      <div
+                        aria-hidden
+                        className={`pointer-events-none absolute -right-10 -top-12 h-40 w-40 rounded-full opacity-40 blur-3xl ${a.glow}`}
+                      />
+                      <span
+                        aria-hidden
+                        className="pointer-events-none absolute right-4 top-2 text-[4.5rem] font-extrabold leading-none text-white/[0.04] sm:text-[6rem]"
+                      >
                         {step.no}
                       </span>
-                    </div>
 
-                    <h3 className="relative mt-5 text-xl font-semibold text-ink">
-                      {step.title}
-                    </h3>
-                    <p className="relative mt-3 text-sm leading-relaxed text-ink-muted sm:text-base">
-                      {parts.length > 1 ? (
-                        <>
-                          {parts[0]}
-                          <span className="font-mono font-semibold tracking-wide text-downloader">
-                            {DOWNLOADER_CODE}
+                      <div className="relative">
+                        <div className="flex items-center gap-4">
+                          <span
+                            className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl ring-1 ring-inset ${a.iconWrap}`}
+                          >
+                            <Icon name={step.icon} size={24} />
                           </span>
-                          {parts[1]}
-                        </>
-                      ) : (
-                        step.text
-                      )}
+                          <div>
+                            <p
+                              className={`text-xs font-semibold uppercase tracking-[0.18em] ${a.eyebrow}`}
+                            >
+                              Schritt {step.no}
+                            </p>
+                            <h2 className="mt-1 text-xl font-semibold text-ink sm:text-2xl">
+                              {step.title}
+                            </h2>
+                          </div>
+                        </div>
+
+                        <ol className="mt-6 space-y-3">
+                          {step.items.map((item, n) => {
+                            const parts = item.split(DOWNLOADER_CODE);
+                            return (
+                              <li
+                                key={n}
+                                className="flex gap-3 text-sm leading-relaxed text-ink-muted sm:text-[0.95rem]"
+                              >
+                                <span
+                                  className={`mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs font-bold ring-1 ring-inset ${a.bullet}`}
+                                >
+                                  {n + 1}
+                                </span>
+                                <span>
+                                  {parts.length > 1 ? (
+                                    <>
+                                      {parts[0]}
+                                      <span className="font-mono font-semibold tracking-wide text-downloader">
+                                        {DOWNLOADER_CODE}
+                                      </span>
+                                      {parts[1]}
+                                    </>
+                                  ) : (
+                                    item
+                                  )}
+                                </span>
+                              </li>
+                            );
+                          })}
+                        </ol>
+                      </div>
+                    </article>
+                  </Reveal>
+                );
+              })}
+            </div>
+
+            {/* 8 · HINWEIS-KARTE ──────────────────────────────── */}
+            <Reveal className="mt-6 block sm:mt-7">
+              <div className="rounded-2xl border border-surface-border bg-surface/70 p-5 sm:p-6">
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-brand/12 text-brand-cyan ring-1 ring-inset ring-brand/20">
+                    <Icon name="shield" size={16} />
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold text-ink">Hinweis</p>
+                    <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">
+                      Nach der Installation trägst du die Zugangsdaten ein, die du
+                      von IPTVKauf über deine Bestellung oder unseren Support
+                      erhalten hast. Ohne gültige Zugangsdaten kann die App keine
+                      Inhalte laden.
                     </p>
-
-                    {step.note && (
-                      <p className="relative mt-4 rounded-xl border border-dashed border-surface-border bg-surface-raised/50 p-3.5 text-xs leading-relaxed text-ink-faint">
-                        <span className="font-semibold text-ink-muted">
-                          Hinweis:{" "}
-                        </span>
-                        {step.note}
-                      </p>
-                    )}
-                  </article>
-                </Reveal>
-              );
-            })}
-          </ol>
-        </div>
-      </section>
-
-      {/* ── KOMPATIBLE GERÄTE ────────────────────────────────── */}
-      <Section
-        eyebrow="Geräte"
-        title={
-          <>
-            Kompatible <span className="text-gradient">Geräte</span>
-          </>
-        }
-        intro="IPTVKauf lässt sich per Downloader-App auf diesen Geräten einrichten."
-      >
-        <div className="mx-auto grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4">
-          {DEVICES.map((d, i) => (
-            <Reveal key={d.name} delay={i * 55}>
-              <article className="group flex h-full flex-col items-center gap-3 rounded-2xl border border-surface-border bg-surface p-5 text-center transition-transform duration-300 hover:-translate-y-1 hover:border-brand/40 sm:p-6">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-surface-raised text-brand-cyan ring-1 ring-inset ring-white/5 transition-colors group-hover:bg-brand/12">
-                  <Icon name={d.icon} size={24} />
-                </span>
-                <span className="text-sm font-medium text-ink sm:text-base">
-                  {d.name}
-                </span>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </Section>
-
-      {/* ── HILFE / SUPPORT ──────────────────────────────────── */}
-      <Section
-        id="hilfe"
-        eyebrow="Support"
-        title={
-          <>
-            Du brauchst <span className="text-gradient">Hilfe</span> bei der
-            Installation?
-          </>
-        }
-        intro="Unser Support hilft dir gerne bei der Einrichtung von IPTVKauf."
-      >
-        <Reveal>
-          <div className="mx-auto flex max-w-md flex-col gap-3 sm:max-w-xl sm:flex-row sm:justify-center">
-            <a
-              href={site.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-whatsapp w-full px-7 py-4 text-base sm:w-auto"
-            >
-              <Icon name="whatsapp" size={20} />
-              WhatsApp Support
-            </a>
-            <a
-              href={site.telegramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-telegram w-full px-7 py-4 text-base sm:w-auto"
-            >
-              <Icon name="telegram" size={20} />
-              Telegram Support
-            </a>
-          </div>
-        </Reveal>
-      </Section>
-
-      {/* ── BOTTOM CTA ───────────────────────────────────────── */}
-      <section className="section pt-0">
-        <div className="container-x">
-          <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-brand/30 p-8 text-center sm:p-14">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 bg-brand-gradient opacity-[0.14]"
-              />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -inset-x-20 -top-24 h-64 bg-hero-glow"
-              />
-              <div className="relative">
-                <h2 className="mx-auto max-w-2xl text-3xl leading-tight sm:text-4xl md:text-[2.75rem]">
-                  Bereit für IPTVKauf?
-                </h2>
-                <p className="mx-auto mt-4 max-w-xl text-base text-ink-muted sm:text-lg">
-                  Jetzt IPTV-Paket auswählen
-                </p>
-                <div className="mt-8">
-                  <Link
-                    href="/pakete"
-                    className="btn-primary px-8 py-4 text-base"
-                  >
-                    Pakete ansehen
-                    <Icon name="arrow" size={18} />
-                  </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+
+            {/* 9 · SUPPORT-KARTE ──────────────────────────────── */}
+            <Reveal className="mt-14 block sm:mt-20">
+              <div className="relative overflow-hidden rounded-3xl border border-surface-border bg-surface p-8 text-center sm:p-12">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -inset-x-24 -top-28 h-56 bg-hero-glow opacity-60"
+                />
+                <div className="relative">
+                  <h2 className="text-2xl font-semibold text-ink sm:text-3xl">
+                    Brauchst du Hilfe bei der Installation?
+                  </h2>
+                  <p className="mx-auto mt-3 max-w-md text-sm text-ink-muted sm:text-base">
+                    Unser IPTVKauf Support hilft dir gerne bei der Einrichtung.
+                  </p>
+                  <div className="mx-auto mt-7 flex max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row sm:justify-center">
+                    <a
+                      href={site.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-whatsapp w-full px-8 py-3.5 text-base sm:w-auto"
+                    >
+                      <Icon name="whatsapp" size={19} />
+                      WhatsApp
+                    </a>
+                    <a
+                      href={site.telegramUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-telegram w-full px-8 py-3.5 text-base sm:w-auto"
+                    >
+                      <Icon name="telegram" size={19} />
+                      Telegram
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          </div>
         </div>
-      </section>
+      </div>
     </>
   );
 }
