@@ -29,6 +29,7 @@ export const primaryNav: NavItem[] = [
   { label: "IPTV Pakete", href: "/pakete" },
   { label: "Funktionen", href: "/funktionen" },
   { label: "Geräte", href: "/geraete" },
+  { label: "Anleitung", href: "/installation" },
   { label: "Blog", href: "/blog" },
   { label: "FAQ", href: "/faq" },
   { label: "Kontakt", href: "/kontakt" },
@@ -71,7 +72,7 @@ export const footerColumns: { title: string; items: NavItem[] }[] = [
     title: "Installation",
     items: [
       { label: "Alle Geräte", href: "/geraete" },
-      { label: "Installationsanleitung", href: "/geraete#installation" },
+      { label: "Installationsanleitung", href: "/installation" },
       { label: "Welche App?", href: "/faq" },
     ],
   },

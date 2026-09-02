@@ -9,7 +9,7 @@ export function Logo({ className = "", onClick }: Props) {
       href="/"
       onClick={onClick}
       aria-label="IPTVKauf – zur Startseite"
-      className={`inline-flex items-center ${className}`}
+      className={`inline-flex shrink-0 items-center ${className}`}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -18,7 +18,7 @@ export function Logo({ className = "", onClick }: Props) {
         width={640}
         height={210}
         decoding="async"
-        className="h-11 w-auto sm:h-14"
+        className="block h-auto w-[150px] min-[400px]:w-[168px] lg:h-14 lg:w-auto"
       />
     </Link>
   );

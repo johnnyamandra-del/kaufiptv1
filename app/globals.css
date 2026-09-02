@@ -12,9 +12,26 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-bg text-ink font-sans antialiased;
     text-rendering: optimizeLegibility;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Mobilnavigation offen: Seite hinter dem Overlay einfrieren und die
+     schwebenden Kontakt-Buttons ausblenden, damit sie die Navigation nicht überdecken. */
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  body.nav-open .floating-contacts {
+    display: none;
   }
 
   ::selection {
