@@ -38,6 +38,22 @@ const config: Config = {
           cyan: "#38BDF8",
           deep: "#1D4ED8",
         },
+        // Downloader / Installation – professionelles Orange (nicht grell)
+        downloader: {
+          DEFAULT: "#F97316",
+          deep: "#C2410C",
+          soft: "#FDBA74",
+        },
+        // WhatsApp – Markengrün
+        whatsapp: {
+          DEFAULT: "#25D366",
+          deep: "#1BA94E",
+        },
+        // Telegram – Markenblau
+        telegram: {
+          DEFAULT: "#229ED9",
+          deep: "#1B82B4",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "-apple-system", "Segoe UI", "Roboto", "sans-serif"],
@@ -55,6 +71,8 @@ const config: Config = {
         "brand-gradient": "linear-gradient(120deg, #38BDF8 0%, #3B82F6 48%, #1D4ED8 100%)",
         "hero-glow":
           "radial-gradient(58% 55% at 78% 18%, rgba(56,189,248,0.24) 0%, rgba(59,130,246,0.14) 34%, rgba(7,12,28,0) 70%)",
+        "downloader-glow":
+          "radial-gradient(58% 55% at 50% 12%, rgba(249,115,22,0.22) 0%, rgba(234,88,12,0.12) 34%, rgba(7,12,28,0) 70%)",
       },
       keyframes: {
         "fade-up": {

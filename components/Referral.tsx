@@ -58,7 +58,7 @@ export function Referral() {
                     href={site.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary flex-1"
+                    className="btn-whatsapp flex-1"
                   >
                     <Icon name="whatsapp" size={15} />
                     Per WhatsApp
@@ -67,7 +67,7 @@ export function Referral() {
                     href={site.telegramUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-secondary flex-1"
+                    className="btn-telegram flex-1"
                   >
                     <Icon name="telegram" size={15} />
                     Per Telegram

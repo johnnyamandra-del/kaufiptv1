@@ -47,26 +47,26 @@ export function DownloaderCodeCard() {
   }, []);
 
   return (
-    <div className="relative mx-auto max-w-2xl overflow-hidden rounded-3xl border border-brand/30 bg-surface p-6 text-center shadow-lift sm:p-12">
+    <div className="relative mx-auto max-w-2xl overflow-hidden rounded-3xl border border-downloader/30 bg-surface p-6 text-center shadow-lift sm:p-12">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-brand-gradient opacity-[0.08]"
+        className="pointer-events-none absolute inset-0 bg-downloader opacity-[0.07]"
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -inset-x-24 -top-28 h-64 bg-hero-glow"
+        className="pointer-events-none absolute -inset-x-24 -top-28 h-64 bg-downloader-glow"
       />
 
       <div className="relative">
-        <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-brand/12 text-brand-cyan ring-1 ring-inset ring-brand/20">
+        <span className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-downloader/12 text-downloader ring-1 ring-inset ring-downloader/25">
           <Icon name="bolt" size={26} />
         </span>
 
-        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-brand-cyan sm:text-sm">
+        <p className="mt-5 text-xs font-semibold uppercase tracking-[0.22em] text-downloader sm:text-sm">
           IPTVKauf Downloader Code
         </p>
 
-        <p className="mt-4 whitespace-nowrap font-mono text-[2.75rem] font-extrabold leading-none tracking-[0.08em] text-ink sm:text-[5.25rem] sm:tracking-[0.12em]">
+        <p className="mt-4 whitespace-nowrap font-mono text-[2.75rem] font-extrabold leading-none tracking-[0.08em] text-downloader sm:text-[5.25rem] sm:tracking-[0.12em]">
           {DOWNLOADER_CODE}
         </p>
 
@@ -74,7 +74,7 @@ export function DownloaderCodeCard() {
           type="button"
           onClick={copyCode}
           aria-label="Downloader-Code kopieren"
-          className="btn-primary mt-7 w-full px-8 py-4 text-base sm:w-auto"
+          className="btn-downloader mt-7 w-full px-8 py-4 text-base sm:w-auto"
         >
           <Icon name={copied ? "check" : "grid"} size={18} />
           Code kopieren
@@ -83,7 +83,7 @@ export function DownloaderCodeCard() {
         <p
           role="status"
           aria-live="polite"
-          className={`mt-3 min-h-[1.25rem] text-sm font-semibold text-brand-cyan transition-opacity duration-200 ${
+          className={`mt-3 min-h-[1.25rem] text-sm font-semibold text-downloader transition-opacity duration-200 ${
             copied ? "opacity-100" : "opacity-0"
           }`}
         >

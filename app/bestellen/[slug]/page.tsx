@@ -61,7 +61,7 @@ export default function OrderPage({ params }: Params) {
           <Reveal delay={60}>
             <div className="rounded-3xl border border-surface-border bg-surface p-6 text-center shadow-lift sm:p-10">
               {/* Kopf */}
-              <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-[#25D366] text-white shadow-[0_12px_30px_-8px_rgba(37,211,102,0.7)] ring-1 ring-white/15">
+              <div className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-whatsapp text-white shadow-[0_12px_30px_-8px_rgba(37,211,102,0.7)] ring-1 ring-white/15">
                 <Icon name="whatsapp" size={32} className="h-8 w-8" />
               </div>
               <p className="mt-4 text-lg font-semibold text-ink">IPTVKauf</p>
@@ -94,7 +94,7 @@ export default function OrderPage({ params }: Params) {
                 href={waApp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-[#25D366] px-7 py-4 text-base font-semibold text-white shadow-[0_12px_30px_-8px_rgba(37,211,102,0.7)] transition-transform duration-200 hover:-translate-y-0.5"
+                className="mt-6 flex w-full items-center justify-center gap-2 rounded-full bg-whatsapp px-7 py-4 text-base font-semibold text-white shadow-[0_12px_30px_-8px_rgba(37,211,102,0.7)] transition-[transform,background-color] duration-200 hover:-translate-y-0.5 hover:bg-whatsapp-deep"
               >
                 <Icon name="whatsapp" size={20} className="h-5 w-5" />
                 WhatsApp öffnen
@@ -103,20 +103,20 @@ export default function OrderPage({ params }: Params) {
                 href={waWeb}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary mt-3 w-full py-3.5"
+                className="btn-secondary mt-3 w-full py-3.5 !border-whatsapp/40 !text-whatsapp hover:!border-whatsapp/70"
               >
                 Weiter zu WhatsApp Web
               </a>
 
               {/* Hinweis Download */}
               <div className="mt-6 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-xs text-ink-muted">
-                <Icon name="whatsapp" size={14} className="text-[#4fdc8a]" />
+                <Icon name="whatsapp" size={14} className="text-whatsapp" />
                 <span>Kein WhatsApp installiert?</span>
                 <a
                   href={WA_DOWNLOAD}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-brand-cyan hover:underline"
+                  className="font-medium text-whatsapp hover:underline"
                 >
                   Jetzt herunterladen
                 </a>

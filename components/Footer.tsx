@@ -16,18 +16,26 @@ export function Footer() {
               Smart TV, Streaming-Geräte, Smartphone und Computer.
             </p>
             <div className="mt-5 flex gap-3">
-              {socialLinks.map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-surface-border bg-surface-raised/60 text-ink-muted transition-colors hover:border-brand/50 hover:text-ink"
-                >
-                  <Icon name={s.icon as never} size={16} />
-                </a>
-              ))}
+              {socialLinks.map((s) => {
+                const svc =
+                  s.icon === "whatsapp"
+                    ? "text-whatsapp hover:border-whatsapp/60"
+                    : s.icon === "telegram"
+                      ? "text-telegram hover:border-telegram/60"
+                      : "text-ink-muted hover:border-brand/50 hover:text-ink";
+                return (
+                  <a
+                    key={s.label}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className={`grid h-10 w-10 place-items-center rounded-full border border-surface-border bg-surface-raised/60 transition-colors ${svc}`}
+                  >
+                    <Icon name={s.icon as never} size={16} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 

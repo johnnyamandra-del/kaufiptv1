@@ -54,28 +54,43 @@ export default function KontaktPage() {
       <section className="section pt-8">
         <div className="container-x">
           <div className="mx-auto grid max-w-3xl gap-4 md:grid-cols-2">
-            {channels.map((c, i) => (
-              <Reveal key={c.name} delay={i * 80}>
-                <a
-                  href={c.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="card group flex h-full flex-col justify-between transition-transform duration-300 hover:-translate-y-1 hover:border-brand/40"
-                >
-                  <div>
-                    <span className="grid h-12 w-12 place-items-center rounded-xl bg-brand/12 text-brand-cyan ring-1 ring-inset ring-brand/20">
-                      <Icon name={c.icon} size={24} />
+            {channels.map((c, i) => {
+              const green = c.icon === "whatsapp";
+              return (
+                <Reveal key={c.name} delay={i * 80}>
+                  <a
+                    href={c.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`card group flex h-full flex-col justify-between transition-transform duration-300 hover:-translate-y-1 ${
+                      green ? "hover:border-whatsapp/50" : "hover:border-telegram/50"
+                    }`}
+                  >
+                    <div>
+                      <span
+                        className={`grid h-12 w-12 place-items-center rounded-xl ring-1 ring-inset ${
+                          green
+                            ? "bg-whatsapp/12 text-whatsapp ring-whatsapp/25"
+                            : "bg-telegram/12 text-telegram ring-telegram/25"
+                        }`}
+                      >
+                        <Icon name={c.icon} size={24} />
+                      </span>
+                      <h2 className="mt-5 text-xl font-semibold text-ink">{c.name}</h2>
+                      <p className="mt-2 text-sm text-ink-muted">{c.desc}</p>
+                    </div>
+                    <span
+                      className={`mt-6 inline-flex items-center gap-2 text-sm font-medium ${
+                        green ? "text-whatsapp" : "text-telegram"
+                      }`}
+                    >
+                      {c.value}
+                      <Icon name="arrow" size={15} />
                     </span>
-                    <h2 className="mt-5 text-xl font-semibold text-ink">{c.name}</h2>
-                    <p className="mt-2 text-sm text-ink-muted">{c.desc}</p>
-                  </div>
-                  <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-brand-cyan">
-                    {c.value}
-                    <Icon name="arrow" size={15} />
-                  </span>
-                </a>
-              </Reveal>
-            ))}
+                  </a>
+                </Reveal>
+              );
+            })}
           </div>
 
           <Reveal>

@@ -93,7 +93,7 @@ export default function InstallationPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#downloader-code"
-                className="btn-primary w-full px-7 py-4 text-base sm:w-auto"
+                className="btn-downloader w-full px-7 py-4 text-base sm:w-auto"
               >
                 Zum Downloader-Code
                 <Icon name="arrow" size={18} />
@@ -117,9 +117,9 @@ export default function InstallationPage() {
       <section id="downloader-code" className="section pt-6">
         <div className="container-x">
           <Reveal className="mx-auto mb-10 max-w-2xl text-center">
-            <p className="eyebrow mb-4">Downloader Code</p>
+            <p className="eyebrow mb-4 !text-downloader">Downloader Code</p>
             <h2 className="text-3xl leading-tight sm:text-4xl md:text-[2.75rem]">
-              Dein Schlüssel zur <span className="text-gradient">Installation</span>
+              Dein Schlüssel zur <span className="text-downloader">Installation</span>
             </h2>
           </Reveal>
           <Reveal>
@@ -132,7 +132,7 @@ export default function InstallationPage() {
       <section id="schritte" className="section pt-6">
         <div className="container-x">
           <Reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="eyebrow mb-4">In 3 Schritten</p>
+            <p className="eyebrow mb-4 !text-downloader">In 3 Schritten</p>
             <h2 className="text-3xl leading-tight sm:text-4xl md:text-[2.75rem]">
               So installierst du IPTVKauf
             </h2>
@@ -156,10 +156,10 @@ export default function InstallationPage() {
                     </span>
 
                     <div className="relative flex items-center gap-4">
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-brand/12 text-brand-cyan ring-1 ring-inset ring-brand/20">
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-downloader/12 text-downloader ring-1 ring-inset ring-downloader/25">
                         <Icon name={step.icon} size={24} />
                       </span>
-                      <span className="text-2xl font-extrabold text-gradient">
+                      <span className="text-2xl font-extrabold text-downloader">
                         {step.no}
                       </span>
                     </div>
@@ -171,7 +171,7 @@ export default function InstallationPage() {
                       {parts.length > 1 ? (
                         <>
                           {parts[0]}
-                          <span className="font-mono font-semibold tracking-wide text-brand-cyan">
+                          <span className="font-mono font-semibold tracking-wide text-downloader">
                             {DOWNLOADER_CODE}
                           </span>
                           {parts[1]}
@@ -241,7 +241,7 @@ export default function InstallationPage() {
               href={site.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary w-full px-7 py-4 text-base sm:w-auto"
+              className="btn-whatsapp w-full px-7 py-4 text-base sm:w-auto"
             >
               <Icon name="whatsapp" size={20} />
               WhatsApp Support
@@ -250,7 +250,7 @@ export default function InstallationPage() {
               href={site.telegramUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-secondary w-full px-7 py-4 text-base sm:w-auto"
+              className="btn-telegram w-full px-7 py-4 text-base sm:w-auto"
             >
               <Icon name="telegram" size={20} />
               Telegram Support

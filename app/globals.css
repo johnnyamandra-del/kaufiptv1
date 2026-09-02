@@ -121,6 +121,40 @@
     transform: translateY(-2px);
   }
 
+  /* Service-Buttons – feste Markenfarben (nicht mit dem IPTVKauf-Blau mischen) */
+  .btn-whatsapp {
+    @apply btn text-white;
+    background-color: theme("colors.whatsapp.DEFAULT");
+    box-shadow: 0 14px 34px -14px rgba(37, 211, 102, 0.6);
+  }
+
+  .btn-whatsapp:hover {
+    background-color: theme("colors.whatsapp.deep");
+    transform: translateY(-2px);
+  }
+
+  .btn-telegram {
+    @apply btn text-white;
+    background-color: theme("colors.telegram.DEFAULT");
+    box-shadow: 0 14px 34px -14px rgba(34, 158, 217, 0.6);
+  }
+
+  .btn-telegram:hover {
+    background-color: theme("colors.telegram.deep");
+    transform: translateY(-2px);
+  }
+
+  .btn-downloader {
+    @apply btn text-white;
+    background-color: theme("colors.downloader.DEFAULT");
+    box-shadow: 0 14px 34px -14px rgba(249, 115, 22, 0.55);
+  }
+
+  .btn-downloader:hover {
+    background-color: theme("colors.downloader.deep");
+    transform: translateY(-2px);
+  }
+
   .hairline {
     @apply border-t border-surface-border;
   }

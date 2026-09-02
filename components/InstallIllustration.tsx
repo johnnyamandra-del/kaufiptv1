@@ -27,13 +27,13 @@ export function InstallIllustration({ className = "" }: { className?: string }) 
           </linearGradient>
         </defs>
 
-        {/* Signal-Bögen */}
+        {/* Signal-Bögen (Downloader = Orange) */}
         <g
           fill="none"
-          stroke="#38BDF8"
+          stroke="#F97316"
           strokeWidth="3"
           strokeLinecap="round"
-          opacity="0.6"
+          opacity="0.7"
         >
           <path d="M330 70a46 46 0 0 1 42 42" />
           <path d="M330 44a72 72 0 0 1 68 68" />
@@ -77,7 +77,7 @@ export function InstallIllustration({ className = "" }: { className?: string }) 
           strokeWidth="1.5"
         />
 
-        {/* Schwebende Code-Karte */}
+        {/* Schwebende Code-Karte (Downloader-Code = Orange) */}
         <g transform="translate(250 176)">
           <rect
             x="0"
@@ -86,17 +86,17 @@ export function InstallIllustration({ className = "" }: { className?: string }) 
             height="86"
             rx="14"
             fill="#152449"
-            stroke="rgba(122,151,255,0.35)"
+            stroke="rgba(249,115,22,0.45)"
             strokeWidth="2"
           />
-          <rect x="16" y="16" width="70" height="8" rx="4" fill="#38BDF8" opacity="0.7" />
+          <rect x="16" y="16" width="70" height="8" rx="4" fill="#F97316" opacity="0.8" />
           <text
             x="16"
             y="58"
             fontFamily="ui-monospace, SFMono-Regular, Menlo, monospace"
             fontSize="26"
             fontWeight="700"
-            fill="#F4F7FF"
+            fill="#F97316"
             letterSpacing="2"
           >
             6768998
